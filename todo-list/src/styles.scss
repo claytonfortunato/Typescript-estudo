@@ -52,6 +52,9 @@ body {
         }
       }
     }
+    .filtroAtivo {
+      background-size: 100% 4px;
+    }
     form {
       display: flex;
       gap: 0.5rem;
