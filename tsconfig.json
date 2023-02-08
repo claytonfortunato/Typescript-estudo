@@ -19,29 +19,6 @@
     "program.ts",
     "commandLineParser.ts",
     "tsc.ts",
-    "diagnosticInformationMap.generated.ts",
+    "diagnosticInformationMap.generated.ts"
   ]
-
-  "compilerOptions": {
-    "module": "system",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "outFile": "../../built/local/tsc.js",
-    "sourceMap": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
-
-  
-    "extends": "@tsconfig/node12/tsconfig.json",
-    "compilerOptions": {
-      "preserveConstEnums": true
-    },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"],
-  
 }
-
-
-  
