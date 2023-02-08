@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { v4 } from "uuid";
+import { MdDelete } from "react-icons/md";
 
 import "./styles.scss";
 
@@ -10,13 +11,7 @@ interface ITodo {
 }
 
 function App() {
-  const [todo, setTodo] = useState<ITodo[]>([
-    {
-      descricao: "comprar pão",
-      completo: false,
-      id: "123456",
-    },
-  ]);
+  const [todo, setTodo] = useState<ITodo[]>([]);
   const [descricao, setDescricao] = useState<string>("");
   const [filtros, setFiltros] = useState<"todos" | "paraFazer" | "completos">(
     "todos"
@@ -51,11 +46,15 @@ function App() {
   };
 
   const filtraTodos = (filtro: string) => {
-    if (filtro === "all") return todo;
+    if (filtro === "todos") return todo;
     if (filtro === "paraFazer")
       return todo.filter((todo) => todo.completo === false);
     if (filtro === "completos")
       return todo.filter((todo) => todo.completo === true);
+  };
+
+  const deletarTodo = (id: string) => {
+    setTodo((prev) => prev.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -91,17 +90,24 @@ function App() {
           />
           <button>Adicionar</button>
         </form>
-        <section className="todo-container">
+        <section className="todos-container">
           {todo &&
             filtraTodos(filtros)?.map(({ id, descricao, completo }) => (
-              <div className="todo" key={id}>
-                <input
-                  type="checkbox"
-                  id={id}
-                  checked={completo}
-                  onChange={() => handleTodo(id)}
-                />
-                <label htmlFor={id}>{descricao}</label>
+              <div key={id} className="todo-container">
+                <div className="todo" key={id}>
+                  <input
+                    type="checkbox"
+                    id={id}
+                    checked={completo}
+                    onChange={() => handleTodo(id)}
+                  />
+                  <label htmlFor={id}>{descricao}</label>
+                </div>
+                {filtros === "completos" && (
+                  <span onClick={() => deletarTodo(id)}>
+                    <MdDelete size={24} color={"red"} />
+                  </span>
+                )}
               </div>
             ))}
         </section>

@@ -77,24 +77,34 @@ body {
         font-weight: 700;
       }
     }
-    .todo-container {
+    .todos-container {
       display: flex;
       flex-direction: column;
       padding: 24px;
+      min-height: 50vh;
 
-      .todo {
-        padding: 8px;
+      .todo-container {
         display: flex;
-        place-items: center;
-        gap: 0.5rem;
-        color: $white;
+        justify-content: space-between;
+        padding: 8px;
+        .todo {
+          padding: 8px;
+          display: flex;
+          place-items: center;
+          gap: 0.5rem;
+          color: $white;
 
-        input {
-          width: 24px;
-          height: 24px;
-        }
-        label {
-          font-weight: 500;
+          input {
+            width: 24px;
+            height: 24px;
+          }
+          label {
+            font-weight: 500;
+          }
+          span {
+            color: $red;
+            cursor: pointer;
+          }
         }
       }
     }
